@@ -1,10 +1,3 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
-
 #include <string>
 #include "Cor.h"
 #include "ItemVenda.h"
@@ -22,4 +15,3 @@ string Cor::getDescricao()
    return ("Cor " + nome + " " + (metalica ? "metalica" : "perolizada")); 
    };
    
-/* fim de arquivo */

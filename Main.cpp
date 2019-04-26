@@ -1,9 +1,4 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
+
 
 #include <iostream>
 #include "Sistema.h"
@@ -26,4 +21,4 @@ int main(int argc, char* argv[])
   };
   
 
-/* fim de arquivo */
+

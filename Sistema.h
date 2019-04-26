@@ -1,10 +1,3 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
-
 #ifndef SISTEMA_H
 
 #define SISTEMA_H
@@ -56,4 +49,4 @@ class Sistema
 #endif
 
 
-/* fim de arquivo */
+

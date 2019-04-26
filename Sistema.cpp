@@ -1,10 +1,3 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
-
 #include <string>
 #include <vector>
 #include <sstream>
@@ -368,4 +361,4 @@ void Sistema:: imprimirOrcto()
 
    };
 
-/* fim de arquivo */
+

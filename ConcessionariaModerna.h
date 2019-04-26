@@ -1,10 +1,3 @@
-/*
- * File:   ConcessionariaModerna.h
- * Author: kelwin
- *
- * Created on 29 de Abril de 2017, 23:02
- */
-
 #ifndef CONCESSIONARIA_MODERNA_H
 
 #define CONCESSIONARIA_MODERNA_H

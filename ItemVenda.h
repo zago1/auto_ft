@@ -1,10 +1,3 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
-
 #ifndef ITEMVENDA_H
 
 #define ITEMVENDA_H
@@ -30,5 +23,3 @@ class ItemVenda
    };
    
 #endif
-   
-/* fim de arquivo */
