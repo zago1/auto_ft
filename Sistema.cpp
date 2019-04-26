@@ -32,63 +32,76 @@ string Sistema::to_string(double numero){
 	return buffer.str();
 }
 
-Sistema::Sistema(ConcessionariaModerna * cliente){
+Sistema::Sistema(ConcessionariaModerna * cliente)
+   {
    this->cliente = cliente;
    boasVindas();
    carregarEstoque();
    orcamento.clear();
-};
+   };
 
-Sistema::~Sistema(){
-   vector<ItemVenda *>::iterator varre;
+Sistema::~Sistema()
+   {
+   vector<ItemVenda *>::iterator items;
 
    orcamento.clear(); // nao usar delete nos itens, pois sao so copias!!!
 
-   varre = carros.begin();
-   while(varre != carros.end()){
-      delete(*varre++);
-   };
+   items = carros.begin();
+   while(items != carros.end())
+      {
+      delete(*items++);
+      };
    carros.clear();
 
-   varre = motores.begin();
-   while(varre != motores.end()){
-      delete(*varre++);
-   };
+   items = motores.begin();
+   while(items != motores.end())
+      {
+      delete(*items++);
+      };
    motores.clear();
 
-   varre = cambios.begin();
-   while(varre != cambios.end()){
-      delete(*varre++);
-   };
+   items = cambios.begin();
+   while(items != cambios.end())
+      {
+      delete(*items++);
+      };
    cambios.clear();
 
-   varre = cores.begin();
-   while(varre != cores.end()){
-      delete(*varre++);
-   };
+   items = cores.begin();
+   while(items != cores.end())
+      {
+      delete(*items++);
+      };
    cores.clear();
 //____________________________________novo__________________________________
-   varre = direcao.begin();
-   while(varre != direcao.end()){
-      delete(*varre++);
-   };
+   items = direcao.begin();
+   while(items != direcao.end())
+      {
+      delete(*items++);
+      };
    direcao.clear();
 
-   varre = rodas.begin();
-   while(varre != rodas.end()){
-      delete(*varre++);
-   };
+   items = rodas.begin();
+   while(items != rodas.end())
+      {
+      delete(*items++);
+      };
    rodas.clear();
 
-   varre = sonorizacao.begin();
-   while(varre != sonorizacao.end()){
-      delete(*varre++);
-   };
+   items = sonorizacao.begin();
+   while(items != sonorizacao.end())
+      {
+      delete(*items++);
+      };
    sonorizacao.clear();
 
-};
+   };
 
-void Sistema::boasVindas(){
+
+
+
+void Sistema::boasVindas()
+   {
    cout << endl << endl;
    cout << "******************************" << endl;
    cout << cliente->getNome() << endl;
@@ -100,9 +113,10 @@ void Sistema::boasVindas(){
    cout<<"Whatsapp:"<< cliente->getwhatsapp()<<endl;
 
    cout << "******************************" << endl << endl;
-};
+   };
 
-void Sistema::carregarEstoque(){
+void Sistema::carregarEstoque()
+   {
    carros.clear();
    carros.insert(carros.end(), new Automovel("GM", "Cruze Sedan",  2015, 107000.00));
    carros.insert(carros.end(), new Automovel("GM", "Cruze Hatch",  2015,  75000.00));
@@ -157,26 +171,34 @@ void Sistema::carregarEstoque(){
    sonorizacao.insert(sonorizacao.end(),new Sonorizacao(700,"JBL ",1500));
    sonorizacao.insert(sonorizacao.end(),new Sonorizacao(650,"Frahm Ar Slim-1000 ",900));
 
-};
+   };
 
-void Sistema::processa(){
+
+
+void Sistema::processa()
+   {
    vector<string> opcoes({ "Sair do Sistema", "Iniciar Venda", "Imprimir Orcamento" });
    Menu menu("Menu Principal", opcoes);
    int escolha = -1;
 
-   while(escolha){
+   while(escolha)
+      {
       escolha = menu.getEscolha();
 
-      switch(escolha){
-         case 1: { iniciarVenda();  }; break;
-         case 2: { imprimirOrcto(); }; break;
+      switch(escolha)
+         {
+ 	 case 1: { iniciarVenda();  }; break;
+ 	 case 2: { imprimirOrcto(); }; break;
+         };
       };
    };
-};
 
-void Sistema::iniciarVenda(){
+void Sistema::iniciarVenda()
+   {
    orcamento.clear();
-   cout << "------------------------------\nNOVA VENDA\n------------------------------\n";
+   cout << "------------------------------" << endl; 
+   cout << "NOVA VENDA" << endl; 
+   cout << "------------------------------" << endl; 
 
    orcamento.insert(orcamento.end(), escolheAutomovel());
    listarConfiguracao();
@@ -193,128 +215,157 @@ void Sistema::iniciarVenda(){
   orcamento.insert(orcamento.end(),escolherSonorizacao());
    listarConfiguracao();
 
-   cout << "------------------------------\nCONFIGURACAO COMPLETADA\n------------------------------\n";
-};
 
-void Sistema::listarConfiguracao(){
-   cout << "------------------------------\nConfiguracao escolhida:\n------------------------------\n";
-
-   vector<ItemVenda *>::iterator varre = orcamento.begin();
-
-   while(varre != orcamento.end()){
-      cout << "  @ " << (*varre)->getDescricao() << "\n\tR$ " << (*varre)->getValor() << endl;
-      varre++;
+   cout << "------------------------------" << endl;
+   cout << "CONFIGURACAO COMPLETADA" << endl; 
+   cout << "------------------------------" << endl;
    };
-};
 
-ItemVenda * Sistema::escolheAutomovel(){
+void Sistema::listarConfiguracao()
+   {
+   cout << "------------------------------" << endl;
+   cout << "Configuracao escolhida:" << endl;
+   cout << "------------------------------" << endl;
+
+   vector<ItemVenda *>::iterator items = orcamento.begin();
+
+   while(items != orcamento.end())
+      {
+      cout << "  @ " << (*items)->getDescricao() << "" << endl; 
+      cout << "\tR$ " << (*items)->getValor() << endl;
+      items++;
+      };
+   };
+
+ItemVenda * Sistema::escolheAutomovel()
+   {
    vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = carros.begin();
+   vector<ItemVenda *>::iterator items = carros.begin();
 
-   while(varre != carros.end()){
-      opcoes.push_back((*varre++)->getDescricao()+" por R$"+ to_string((*varre)->getValor()));
-   };
+   while(items != carros.end())
+      {
+      opcoes.push_back((*items++)->getDescricao()+" por R$"+ to_string((*items)->getValor()));
+      };
    Menu menu("Modelos disponiveis", opcoes);
 
    return (carros.at(menu.getEscolha()));
-};
-
-ItemVenda * Sistema::escolheMotor(){
-   vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = motores.begin();
-
-   while(varre != motores.end()){
-      opcoes.push_back((*varre)->getDescricao() + " por R$ " + to_string((*varre)->getValor()));
-      varre++;
    };
+
+ItemVenda * Sistema::escolheMotor()
+   {
+   vector<string> opcoes;
+   vector<ItemVenda *>::iterator items = motores.begin();
+
+   while(items != motores.end())
+      {
+      opcoes.push_back((*items)->getDescricao() + " por R$ " + to_string((*items)->getValor()));
+      items++;
+      };
    Menu menu("Motorizacoes disponiveis", opcoes);
 
    return (motores.at(menu.getEscolha()));
-};
-
-ItemVenda * Sistema::escolheCambio(){
-   vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = cambios.begin();
-
-   while(varre != cambios.end()){
-	   opcoes.push_back((*varre)->getDescricao() + " por R$ " + to_string((*varre)->getValor()));
-	   varre++;
    };
+
+ItemVenda * Sistema::escolheCambio()
+   {
+   vector<string> opcoes;
+   vector<ItemVenda *>::iterator items = cambios.begin();
+
+   while(items != cambios.end())
+      {
+	   opcoes.push_back((*items)->getDescricao() + " por R$ " + to_string((*items)->getValor()));
+	   items++;
+      };
    Menu menu("Cambios disponiveis", opcoes);
 
    return (cambios.at(menu.getEscolha()));
-};
-
-ItemVenda * Sistema::escolheCor(){
-   vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = cores.begin();
-
-   while(varre != cores.end()){
-	   opcoes.push_back((*varre)->getDescricao() + "  por R$  " +  to_string((*varre)->getValor()));
-	   varre++;
    };
+
+ItemVenda * Sistema::escolheCor()
+   {
+   vector<string> opcoes;
+   vector<ItemVenda *>::iterator items = cores.begin();
+
+   while(items != cores.end())
+      {
+	   opcoes.push_back((*items)->getDescricao() + "  por R$  " +  to_string((*items)->getValor()));
+	   items++;
+      };
    Menu menu("Cores disponiveis", opcoes);
 
    return (cores.at(menu.getEscolha()));
-};
+   };
 
-ItemVenda * Sistema::escolherDirecao(){
+
+
+ItemVenda * Sistema::escolherDirecao()
+   {
    vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = direcao.begin();
+   vector<ItemVenda *>::iterator items = direcao.begin();
 
-   while(varre != direcao.end())
+   while(items != direcao.end())
       {
-	   opcoes.push_back((*varre)->getDescricao() + " por R$ " +  to_string((*varre)->getValor()));
-	   varre++;
+	   opcoes.push_back((*items)->getDescricao() + " por R$ " +  to_string((*items)->getValor()));
+	   items++;
       };
-   Menu menu("Direçoẽs disponiveis", opcoes);
+   Menu menu("Direcoes disponiveis", opcoes);
 
    return (direcao.at(menu.getEscolha()));
-};
+   };
 
-ItemVenda * Sistema::escolherRodas(){
+ItemVenda * Sistema::escolherRodas()
+   {
    vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = rodas.begin();
+   vector<ItemVenda *>::iterator items = rodas.begin();
 
-   while(varre != rodas.end())
+   while(items != rodas.end())
       {
-	   opcoes.push_back((*varre)->getDescricao() + " por R$ " + to_string((*varre)->getValor()));
-	   varre++;
+	   opcoes.push_back((*items)->getDescricao() + " por R$ " + to_string((*items)->getValor()));
+	   items++;
       };
    Menu menu("Rodas disponiveis", opcoes);
 
    return (rodas.at(menu.getEscolha()));
-};
+   };
 
-ItemVenda * Sistema::escolherSonorizacao(){
+ItemVenda * Sistema::escolherSonorizacao()
+   {
    vector<string> opcoes;
-   vector<ItemVenda *>::iterator varre = sonorizacao.begin();
+   vector<ItemVenda *>::iterator items = sonorizacao.begin();
 
-   while(varre != sonorizacao.end())
+   while(items != sonorizacao.end())
       {
-	  opcoes.push_back((*varre)->getDescricao() + " por R$ " + to_string((*varre)->getValor()));
-      varre++;
+	  opcoes.push_back((*items)->getDescricao() + " por R$ " + to_string((*items)->getValor()));
+      items++;
       };
-   Menu menu("Sonorizacoẽs disponiveis", opcoes);
+   Menu menu("Sonorizacoes disponiveis", opcoes);
 
    return (sonorizacao.at(menu.getEscolha()));
-};
+   };
 
-void Sistema:: imprimirOrcto(){
+
+
+void Sistema:: imprimirOrcto()
+   {
 	   double total=0;
 	   boasVindas();
-	   cout << "------------------------------\nOrçamento do Automovel:\n------------------------------\n";
+	   cout << "------------------------------" << endl;
+      cout << "Orçamento" << endl;
+      cout << "------------------------------" << endl;
 
-	   vector<ItemVenda *>::iterator varre = orcamento.begin();
+	   vector<ItemVenda *>::iterator items = orcamento.begin();
 
-	   while(varre != orcamento.end())
+	   while(items != orcamento.end())
 	      {
-	      cout << (*varre)->getDescricao() << "\tR$ " << (*varre)->getValor() << endl;
-	      total =(*varre)->getValor()+total;
-	      varre++;
+	      cout << (*items)->getDescricao() << "\tR$ " << (*items)->getValor() << endl;
+	      total =(*items)->getValor()+total;
+	      items++;
 	      };
-	   cout<<"___________________________________________________________________________"<<endl;
-	   cout<<"Valor do seu veiculo\t\t "<<total<<endl;
+	   cout << "___________________________________________________________________________" << endl;
+	   cout << "Valor do Veiculo: R$ "<< total <<endl;
+
+
+
    };
 
 /* fim de arquivo */

@@ -18,7 +18,7 @@ Concessionaria::Concessionaria(string nome, string endereco, string cidade, stri
    this->estado = estado;
    this->fone = fone;
    };
-   
+ 
 const string Concessionaria::getNome()     { return (nome); };
 const string Concessionaria::getEndereco() { return (endereco); };
 const string Concessionaria::getCidade()   { return (cidade); };

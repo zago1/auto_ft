@@ -23,6 +23,7 @@ class Cambio : public ItemVenda
    public:
       Cambio(string, int, double);
       virtual string getDescricao();
+
    };
    
 #endif

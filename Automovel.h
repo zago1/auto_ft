@@ -24,6 +24,7 @@ class Automovel : public ItemVenda
    public:
       Automovel(string, string, int, double);
       virtual string getDescricao();
+
    };
    
 #endif

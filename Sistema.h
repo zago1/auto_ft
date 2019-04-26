@@ -18,7 +18,8 @@
 
 using namespace std;
 
-class Sistema{
+class Sistema
+   {
    private:
       vector<ItemVenda *> carros;
       vector<ItemVenda *> motores;
@@ -50,7 +51,7 @@ class Sistema{
       ~Sistema();
       void processa();
       string to_string(double numero);
-};
+   };
 
 #endif
 

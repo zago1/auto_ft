@@ -3,22 +3,12 @@
 #include "Concessionaria.h"
 #include "ConcessionariaModerna.h"
 
+
+
 using namespace std;
 
-ConcessionariaModerna::ConcessionariaModerna(
-    string site,
-    string facebook,
-    string twitter,
-    string whatsapp,
-    string nome,
-    string endereco,
-    string cidade,
-    string estado,
-    string fone) : Concessionaria(nome,
-    endereco,
-    cidade,
-    estado,
-    fone)
+
+ConcessionariaModerna::ConcessionariaModerna(string site, string facebook, string twitter, string whatsapp ,string nome, string endereco, string cidade, string estado, string fone):Concessionaria (nome,endereco,cidade,estado,fone)
 {
    this->site=site;
    this->facebook=facebook;
