@@ -1,30 +1,33 @@
-/* Unicamp - Universidade Estadual de Campinas
-   FT - Faculdade de Tecnologia
-   Limeira - SP
-   Prof. Dr. Andre F. de Angelis
-   Maio/2015
-*/
-
 #include <string>
+
+#include "Concessionaria.h"
 #include "ConcessionariaModerna.h"
 
 using namespace std;
 
 ConcessionariaModerna::ConcessionariaModerna(
+    string site,
+    string facebook,
+    string twitter,
+    string whatsapp,
     string nome,
     string endereco,
     string cidade,
     string estado,
-    string fone,
-    string facebook,
-    string twitter,
-    string whatsapp) : Concessionaria(nome, endereco, cidade, estado, fone)
+    string fone) : Concessionaria(nome,
+    endereco,
+    cidade,
+    estado,
+    fone)
 {
-    this->facebook = facebook;
-    this->twitter = twitter;
-    this->whatsapp = whatsapp;
-};
+   this->site=site;
+   this->facebook=facebook;
+   this->whatsapp=whatsapp;
+   this->twitter=twitter;
+}
 
-const string ConcessionariaModerna::getFacebook() { return (facebook); };
-const string ConcessionariaModerna::getTwitter() { return (twitter); };
-const string ConcessionariaModerna::getWhatsapp() { return (whatsapp); };
+const string ConcessionariaModerna::getsite()     { return (site); };
+const string ConcessionariaModerna::getfacebook() { return (facebook); };
+const string ConcessionariaModerna::getwhatsapp()   { return (whatsapp); };
+const string ConcessionariaModerna::gettwitter()   { return (twitter); };
+
